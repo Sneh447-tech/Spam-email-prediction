@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Welcome {{user}}</h2>
+
+{% if premium == 1 %}
+<p style="color: gold;">🌟 Premium User</p>
+{% else %}
+<a href="/payment"><button>💳 Upgrade</button></a>
+{% endif %}
+
+<div class="card">
+<h3>📧 Check Email</h3>
+<a href="/predict"><button>Open</button></a>
+</div>
+
+<div class="card">
+<h3>📊 History</h3>
+<a href="/history"><button>View</button></a>
+</div>
+
+{% endblock %}

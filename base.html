@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SpamAI</title>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+body {
+    font-family: Arial;
+    margin: 0;
+    background: linear-gradient(-45deg, #1e3c72, #2a5298, #ff7e5f, #feb47b);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    color: white;
+}
+
+@keyframes gradient {
+    0% {background-position: 0%}
+    50% {background-position: 100%}
+    100% {background-position: 0%}
+}
+
+/* Navbar */
+.navbar {
+    background: rgba(0,0,0,0.7);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+
+.container {
+    text-align: center;
+    margin-top: 60px;
+}
+
+/* Cards */
+.card {
+    display: inline-block;
+    background: white;
+    color: black;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 15px;
+    width: 220px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+button {
+    padding: 10px 15px;
+    background: #ff7e5f;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>SpamAI 🚀</h2>
+    <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/predict">Check</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+<div class="container">
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+</body>
+</html>

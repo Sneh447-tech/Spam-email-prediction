@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="
+text-align:center;
+margin-bottom:25px;
+font-size:38px;
+font-weight:bold;
+">
+📊 Analytics Dashboard
+</h1>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+width:95%;
+max-width:1100px;
+margin:auto;
+">
+
+<div class="card">
+<h2>{{ rows|length }}</h2>
+<p>Total Checks</p>
+</div>
+
+<div class="card">
+<h2>
+{% set spam = rows|selectattr('2','equalto','SPAM 🚫')|list|length %}
+{{ spam }}
+</h2>
+<p>Spam Emails</p>
+</div>
+
+<div class="card">
+<h2>{{ rows|length - spam }}</h2>
+<p>Safe Emails</p>
+</div>
+
+<div class="card">
+<h2>98%</h2>
+<p>Accuracy</p>
+</div>
+
+</div>
+
+<br><br>
+
+<div style="
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+width:95%;
+max-width:1100px;
+margin:auto;
+">
+
+<div class="box">
+<canvas id="lineChart"></canvas>
+</div>
+
+<div class="box">
+<canvas id="pieChart"></canvas>
+</div>
+
+</div>
+
+<br><br>
+
+<div class="box" style="width:95%;max-width:1100px;margin:auto;">
+
+<h2 style="margin-bottom:15px;">📜 Prediction History</h2>
+
+<table style="width:100%; border-collapse:collapse;">
+<tr style="background:#007bff;color:white;">
+<th>Email</th>
+<th>Score</th>
+<th>Result</th>
+</tr>
+
+{% for row in rows %}
+<tr style="border-bottom:1px solid #ddd;">
+<td>{{ row[0][:65] }}...</td>
+<td>{{ row[1] }}%</td>
+<td>{{ row[2] }}</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+
+<style>
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family:Arial;
+color:white;
+}
+
+.card{
+background:white;
+color:black;
+padding:25px;
+border-radius:18px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+animation:fadeUp 0.8s ease;
+}
+
+.card h2{
+font-size:38px;
+margin:0;
+color:#007bff;
+}
+
+.box{
+background:white;
+padding:20px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+color:black;
+}
+
+table td,th{
+padding:12px;
+text-align:center;
+}
+
+tr:hover{
+background:#f4f4f4;
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(30px);}
+to{opacity:1;transform:translateY(0);}
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const labels = [
+{% for row in rows %}
+"{{ loop.index }}",
+{% endfor %}
+];
+
+const scores = [
+{% for row in rows %}
+{{ row[1] }},
+{% endfor %}
+];
+
+new Chart(document.getElementById("lineChart"), {
+type: "line",
+data: {
+labels: labels,
+datasets: [{
+label: "Spam Score %",
+data: scores,
+fill: true,
+tension:0.4
+}]
+}
+});
+
+new Chart(document.getElementById("pieChart"), {
+type: "doughnut",
+data: {
+labels:["Spam","Safe"],
+datasets:[{
+data:[{{ spam }}, {{ rows|length - spam }}]
+}]
+}
+});
+</script>
+
+{% endblock %}

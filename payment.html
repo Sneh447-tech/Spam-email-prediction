@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="pay-box">
+
+<div class="top-bar">
+<h2>💳 Razorpay Secure Checkout</h2>
+<p>Test / Demo Mode</p>
+</div>
+
+<div class="amount-box">
+<h1>₹99</h1>
+<p>SpamAI Premium Subscription</p>
+</div>
+
+<form id="payForm">
+
+<input type="text" placeholder="Full Name" required>
+
+<input type="text" placeholder="Mobile Number" required>
+
+<select required>
+<option value="">Choose Payment Method</option>
+<option>Credit / Debit Card</option>
+<option>UPI</option>
+<option>Net Banking</option>
+</select>
+
+<input type="text" placeholder="Card Number / UPI ID" required>
+
+<div class="row">
+<input type="text" placeholder="MM/YY" required>
+<input type="text" placeholder="CVV" required>
+</div>
+
+<button type="submit">🔒 Pay ₹99</button>
+
+</form>
+
+<p class="safe">Demo Mode • No Real Deduction</p>
+
+</div>
+
+<div id="successBox" class="success-box">
+<h1>✅ Payment Successful</h1>
+<h2>₹99 Paid</h2>
+<p>Premium Activated</p>
+</div>
+
+<style>
+body{
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+font-family:Arial;
+}
+
+.pay-box{
+max-width:500px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+animation:fadeIn 0.8s;
+}
+
+.top-bar{
+text-align:center;
+color:#0a58ca;
+}
+
+.amount-box{
+text-align:center;
+margin:20px 0;
+}
+
+.amount-box h1{
+font-size:45px;
+margin:0;
+}
+
+input,select{
+width:100%;
+padding:14px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+
+.row{
+display:flex;
+gap:10px;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#0a58ca;
+color:white;
+font-size:18px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+margin-top:10px;
+}
+
+button:hover{
+background:#084298;
+}
+
+.safe{
+text-align:center;
+margin-top:15px;
+color:gray;
+font-size:14px;
+}
+
+.success-box{
+display:none;
+text-align:center;
+background:white;
+padding:40px;
+border-radius:20px;
+max-width:450px;
+margin:40px auto;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+animation:pop 0.8s;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes pop{
+from{transform:scale(0.7);opacity:0;}
+to{transform:scale(1);opacity:1;}
+}
+</style>
+
+<script>
+document.getElementById("payForm").onsubmit = function(e){
+e.preventDefault();
+
+document.querySelector(".pay-box").style.display="none";
+document.getElementById("successBox").style.display="block";
+
+setTimeout(function(){
+fetch("/payment_success", {
+method:"POST"
+}).then(()=>{
+window.location.href="/dashboard";
+});
+},2000);
+}
+</script>
+
+{% endblock %}

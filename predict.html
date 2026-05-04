@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Check Email Spam</h2>
+
+<form method="post">
+<textarea name="email" style="width:60%;height:120px;"></textarea><br><br>
+<button>Check</button>
+</form>
+
+{% if result %}
+<div style="
+background:white;
+color:black;
+padding:20px;
+margin-top:20px;
+border-radius:10px;
+width:400px;
+margin:auto;
+">
+<h2>{{result}}</h2>
+<p>Confidence Score: {{score}}%</p>
+</div>
+{% endif %}
+
+{% endblock %}
