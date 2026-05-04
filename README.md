@@ -62,6 +62,8 @@ A full-stack web application that classifies emails as Spam or Not Spam using Ma
 _Add screenshots of your application_
 
 ```md
+## 📸 Screenshots
+
 ![Login Page](images/login.png)
-![Prediction Page](images/predict.png)
+![Spam Prediction](images/predict.png)
 ![Dashboard](images/dashboard.png)
