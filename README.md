@@ -1,145 +1,67 @@
-#  Spam Email Detection using Machine Learning
+# Spam Email Detection Web App 
 
-## Project Overview
-
-Spam emails are unwanted messages that may contain advertisements, phishing links, or malicious content. Detecting spam emails automatically is important to keep inboxes safe and organized.
-
-This project uses **Machine Learning techniques** to classify emails as **Spam** or **Not Spam (Ham)**. The model is trained on a labeled dataset of emails and learns patterns in spam messages such as suspicious words, links, and unusual text structures.
-
-The goal of this project is to build a **simple and efficient spam detection system** that can automatically filter unwanted emails.
+A full-stack web application that classifies emails as Spam or Not Spam using Machine Learning. The system includes user authentication, prediction history, analytics dashboard, and a demo premium upgrade system.
 
 ---
 
-## Objectives
+# Key Features
 
-* To understand the working of **machine learning in text classification**
-* To preprocess email text data
-* To train a model that can classify emails into spam or ham
-* To evaluate the accuracy of the spam detection system
-
----
-
-##  Technologies Used
-
-* **Python**
-* **Machine Learning**
-* **Scikit-learn**
-* **Pandas**
-* **NumPy**
-* **Natural Language Processing (NLP)**
+-  User Registration & Login system
+-  Spam Detection using Machine Learning
+-  Dashboard with analytics and usage tracking
+-  Prediction History stored in database
+-  Demo Razorpay Payment Integration (UI only)
+-  Premium Upgrade Feature
 
 ---
 
-##  Project Workflow
+## Machine Learning Pipeline
 
-1 **Data Collection**
-The dataset containing labeled emails (spam/ham) is collected.
-
-2 **Data Preprocessing**
-
-* Removing stop words
-* Lowercasing text
-* Removing punctuation
-* Tokenization
-
-3 **Feature Extraction**
-Text data is converted into numerical form using techniques like:
-
-* **Bag of Words**
-* **TF-IDF Vectorization**
-
-4 **Model Training**
-Machine learning algorithms such as:
-
-* Naive Bayes
-* Logistic Regression
-* Support Vector Machine (optional)
-
-5 **Model Evaluation**
-The model is evaluated using:
-
-* Accuracy
-* Confusion Matrix
-* Precision and Recall
+1. User inputs email text  
+2. Text preprocessing:
+   - Lowercasing
+   - Removing stopwords
+   - Cleaning text  
+3. Feature extraction using TF-IDF / CountVectorizer  
+4. Model prediction using trained ML model  
+5. Result displayed and stored in database  
 
 ---
 
-## Project Structure
+##  Model Details
 
-```
-spam-email-detection
-│
-├── dataset
-│   └── spam.csv
-│
-├── notebook
-│   └── spam_detection.ipynb
-│
-├── model
-│   └── spam_model.pkl
-│
-├── src
-│   └── train_model.py
-│
-├── requirements.txt
-│
-└── README.md
-```
+- Algorithm: Naive Bayes / Logistic Regression *(update this)*
+- Vectorizer: TF-IDF / CountVectorizer *(update this)*
 
 ---
 
-## Installation
+## Model Performance
 
-Clone the repository
-
-```bash
-git clone https://github.com/yourusername/spam-email-detection.git
-```
-
-Move to the project directory
-
-```bash
-cd spam-email-detection
-```
-
-Install required libraries
-
-```bash
-pip install -r requirements.txt
-```
+- Accuracy: 95% *(update this)*  
+- Reliable spam classification with good precision and recall  
 
 ---
 
-## Running the Project
+## 🛠 Tech Stack
 
-Run the training script
+**Backend:**
+- Python (Flask)
+- SQLite Database
 
-```bash
-python train_model.py
-```
+**Machine Learning:**
+- Scikit-learn
+- Pandas / NumPy
 
-Or open the Jupyter notebook
-
-```bash
-jupyter notebook
-```
-
----
-
-## Example Output
-
-Input Email:
-
-```
-Congratulations! You have won a free lottery ticket.
-Click here to claim your prize.
-```
-
-Prediction:
-
-```
-Spam
-```
+**Frontend:**
+- HTML, CSS, JavaScript
 
 ---
 
+##  Screenshots
+
+_Add screenshots of your application_
+
+```md
+![Login Page](images/login.png)
+![Prediction Page](images/predict.png)
+![Dashboard](images/dashboard.png)
