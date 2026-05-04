@@ -67,4 +67,3 @@ _Add screenshots of your application_
 ![Login Page](images/login.png)
 ![Spam Prediction](images/predict.png)
 ![Dashboard](images/dashboard.png)
-login.png
