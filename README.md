@@ -64,6 +64,6 @@ _Add screenshots of your application_
 ```md
 ## 📸 Screenshots
 
-![Login Page](images/login.png)
+![Login Page](images/https://github.com/Sneh447-tech/Spam-email-prediction/blob/5f72a5535951ccbe96e369481cb172beef6f3f58/login.png)
 ![Spam Prediction](images/predict.png)
 ![Dashboard](images/dashboard.png)
